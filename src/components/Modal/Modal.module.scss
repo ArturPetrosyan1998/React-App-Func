@@ -9,18 +9,38 @@
     align-items: center;
     justify-content: center;
     align-items: center;
-    background-color:gray;
+    background-color: gray;
     opacity: 0.6;
     width: 100%;
     height: 100vh;
 }
 
-.modalwindow{
+.modalwindow {
     width: 600px;
     height: 400px;
     background-color: white;
+    display: flex;
+    align-items: center;
 }
 
 .modalOpen {
     display: flex;
+}
+
+.modalButton {
+    padding: 10px 25px;
+    background-color: black;
+    height: 50px;
+    margin: 20px;
+    font-size: 20px;
+    color: white;
+    &:hover{
+        cursor: pointer;
+        opacity: 0.5;
+    }
+}
+
+.h2 {
+    font-size: 30px;
+    color: red;
 }

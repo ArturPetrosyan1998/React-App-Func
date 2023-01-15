@@ -5,15 +5,14 @@ import styles from './Button.module.scss';
 const cx = classNames.bind(styles);
 class Button extends Component {
   render() {
-    const { onClick } = this.props;
+    const { onClick, text = 'Click', modalButton } = this.props;
     return (
       <button
         type="button"
         onClick={onClick}
-        className={cx('button')}
+        className={cx('button', { buttonModal: modalButton })}
       >
-        Click
-
+        {text}
       </button>
     );
   }

@@ -1,7 +1,11 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
+import Aside from './components/Aside/Aside';
+import './Reset.scss';
 
-export class App extends Component {
+class App extends Component {
   render() {
-    return <div />;
+    return <Aside isOpen />;
   }
 }
+
+export default App;

@@ -20,6 +20,10 @@
         "react/prefer-stateless-function": "off",
         "no-unused-vars" :"warn",
         "import/prefer-default-export": "off",
-        "linebreak-style":"off"
+        "linebreak-style":"off",
+        "react/react-in-jsx-scope": "off",
+       "import/no-extraneous-dependencies":"off",
+       "react/self-closing-comp":"warn",
+       "react/prop-types":"off"
     }
 }

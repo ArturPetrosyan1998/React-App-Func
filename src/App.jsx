@@ -6,6 +6,7 @@ import Login from './pages/auth/Login/Login';
 import Counter from './pages/Counter/Counter';
 import PrivateRoute from './components/routes/PrivateRoute';
 import PublicRoute from './components/routes/PublicRoute';
+import Registration from './pages/auth/Register/Registration';
 
 class App extends Component {
   render() {
@@ -36,6 +37,7 @@ class App extends Component {
               </PublicRoute>
 )}
           />
+          <Route path="/registration" element={<Registration />} />
         </Routes>
       </BrowserRouter>
     );

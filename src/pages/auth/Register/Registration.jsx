@@ -20,7 +20,6 @@ class Registration extends Component {
     localStorage.setItem('password', password);
     if (login && password) {
       this.setState({ isLoggedIn: true });
-      localStorage.setItem('token', true);
     }
   };
 
@@ -43,7 +42,7 @@ class Registration extends Component {
             placeholder="Password"
             name="password"
           />
-          <button disabled={!login || !password} type="submit">Submit</button>
+          <button disabled={!login || !password} type="submit">Create Account</button>
         </form>
 
       </div>

@@ -7,6 +7,7 @@ import Counter from './pages/Counter/Counter';
 import PrivateRoute from './components/routes/PrivateRoute';
 import PublicRoute from './components/routes/PublicRoute';
 import Registration from './pages/auth/Register/Registration';
+import Button from './components/Button/Button';
 
 class App extends Component {
   render() {
@@ -19,7 +20,7 @@ class App extends Component {
               <PrivateRoute>
                 <Home />
               </PrivateRoute>
-)}
+            )}
           />
           <Route
             path="/counter"
@@ -27,7 +28,7 @@ class App extends Component {
               <PrivateRoute>
                 <Counter />
               </PrivateRoute>
-)}
+            )}
           />
           <Route
             path="/login"
@@ -35,9 +36,16 @@ class App extends Component {
               <PublicRoute>
                 <Login />
               </PublicRoute>
-)}
+            )}
           />
-          <Route path="/registration" element={<Registration />} />
+          <Route
+            path="/registration"
+            element={(
+              <PublicRoute>
+                <Registration />
+              </PublicRoute>
+            )}
+          />
         </Routes>
       </BrowserRouter>
     );

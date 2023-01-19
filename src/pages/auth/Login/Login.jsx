@@ -1,12 +1,8 @@
 import { Component } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import styles from './Login.module.scss';
 
-const users = [
-  { name: 'John', password: '111John' },
-  { name: 'Mark', password: '222Mark' },
-  { name: 'Ann', password: '333Ann' },
-];
+const users = [{ login: localStorage.getItem('login'), password: localStorage.getItem('password') }];
 class Login extends Component {
   state = {
     login: '',
@@ -21,8 +17,7 @@ class Login extends Component {
   onSubmit = (event) => {
     event.preventDefault();
     const { login, password } = this.state;
-    const foundUser = users.find((item) => item.name === login && item.password === password);
-
+    const foundUser = users.find((item) => item.login === login && item.password === password);
     if (foundUser) {
       localStorage.setItem('token', true);
       this.setState({ isLoggedIn: true });
@@ -49,8 +44,8 @@ class Login extends Component {
             name="password"
           />
           <button disabled={!login || !password} type="submit">Submit</button>
+          <button type="button"><Link to="/registration" className={styles.RegistrLink}>Create new account</Link></button>
         </form>
-
       </div>
 
     );

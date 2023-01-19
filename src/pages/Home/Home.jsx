@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Aside from '../../components/Aside/Aside';
 import Button from '../../components/Button/Button';
+import Header from '../../components/Header/Header';
 
 class Home extends Component {
   state = {
@@ -16,8 +17,8 @@ class Home extends Component {
     const { isOpen } = this.state;
     return (
       <div>
+        <Header onClick={this.handleToggleAside} />
         <Aside isOpen={isOpen} />
-        <Button onClick={this.handleToggleAside} text="Button Aside" />
       </div>
     );
   }

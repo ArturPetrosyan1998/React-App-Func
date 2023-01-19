@@ -6,6 +6,7 @@ const cx = classNames.bind(styles);
 class Aside extends Component {
   render() {
     const { isOpen } = this.props;
+
     return (
       <aside className={cx('aside', { open: isOpen })} />
     );

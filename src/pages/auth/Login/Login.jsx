@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import Home from '../../Home/Home';
+import { Navigate } from 'react-router-dom';
 import styles from './Login.module.scss';
 
 const users = [
@@ -11,6 +11,7 @@ class Login extends Component {
   state = {
     login: '',
     password: '',
+    isLoggedIn: false,
   };
 
   onChange = (event) => {
@@ -24,12 +25,13 @@ class Login extends Component {
 
     if (foundUser) {
       localStorage.setItem('token', true);
+      this.setState({ isLoggedIn: true });
     }
   };
 
   render() {
-    const { login, password } = this.state;
-    return (
+    const { login, password, isLoggedIn } = this.state;
+    return isLoggedIn ? <Navigate to="/" /> : (
       <div className={styles.container}>
         <form className={styles.form} onSubmit={this.onSubmit}>
           <input

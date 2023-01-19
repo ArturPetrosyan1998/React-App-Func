@@ -8,6 +8,7 @@ class Navigation extends Component {
       <nav className={styles.nav}>
         <NavLink to="/" className={styles.NavLink}>Home</NavLink>
         <NavLink to="/counter" className={styles.NavLink}>Counter</NavLink>
+        <NavLink to="/login" className={styles.NavLink}>Login</NavLink>
       </nav>
     );
   }

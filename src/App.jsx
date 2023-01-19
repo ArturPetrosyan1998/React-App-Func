@@ -1,18 +1,14 @@
 import { Component } from 'react';
 import Aside from './components/Aside/Aside';
 import Button from './components/Button/Button';
+import Header from './components/Header/Header';
 import Modal from './components/Modal/Modal';
-import './Reset.scss';
+import Home from './pages/Home/Home';
+import './reset.scss';
 
 class App extends Component {
   state = {
-    isOpen: false,
     isOpenModal: false,
-  };
-
-  handleToggleAside = () => {
-    const { isOpen } = this.state;
-    this.setState({ isOpen: !isOpen });
   };
 
   handleModalOpen = () => {
@@ -26,11 +22,10 @@ class App extends Component {
   };
 
   render() {
-    const { isOpen, isOpenModal } = this.state;
+    const { isOpenModal } = this.state;
     return (
       <>
-        <Aside isOpen={isOpen} />
-        <Button onClick={this.handleToggleAside} text="Button Aside" />
+        <Header />
         <Modal isOpenModal={isOpenModal} onClick={this.handleModalClose} />
         <Button modalButton text="Modal Button" onClick={this.handleModalOpen} />
       </>

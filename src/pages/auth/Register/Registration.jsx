@@ -16,14 +16,14 @@ class Registration extends Component {
   onSubmit = (event) => {
     event.preventDefault();
     const { login, password, isLoggedIn } = this.state;
-    const users = [{
+    const users = JSON.parse(localStorage.getItem('user')) || [];
+    users.push({
       userName: login,
       userPassword: password,
-    }];
-    const newUsersList = users.map((item) => ({ userName: item.userName, userPassword: item.userPassword }));
-    const usersStr = JSON.stringify(newUsersList);
+    });
+    const usersStr = JSON.stringify(users);
     localStorage.setItem('user', usersStr);
-    if (newUsersList) {
+    if (users) {
       this.setState({
         isLoggedIn: true,
       });

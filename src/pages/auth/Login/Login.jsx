@@ -2,7 +2,6 @@ import { Component } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import styles from './Login.module.scss';
 
-const users = [{ login: localStorage.getItem('login'), password: localStorage.getItem('password') }];
 class Login extends Component {
   state = {
     login: '',
@@ -17,7 +16,9 @@ class Login extends Component {
   onSubmit = (event) => {
     event.preventDefault();
     const { login, password } = this.state;
-    const foundUser = users.find((item) => item.login === login && item.password === password);
+    const usersFromLocal = localStorage.getItem('user');
+    const newUsers = JSON.parse(usersFromLocal);
+    const foundUser = newUsers.find((item) => item.userName === login && item.userPassword === password);
     if (foundUser) {
       localStorage.setItem('token', true);
       this.setState({ isLoggedIn: true });

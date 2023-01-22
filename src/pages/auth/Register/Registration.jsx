@@ -15,16 +15,24 @@ class Registration extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    const { login, password } = this.state;
-    localStorage.setItem('login', login);
-    localStorage.setItem('password', password);
-    if (login && password) {
-      this.setState({ isLoggedIn: true });
+    const { login, password, isLoggedIn } = this.state;
+    const users = [{
+      userName: login,
+      userPassword: password,
+    }];
+    const newUsersList = users.map((item) => ({ userName: item.userName, userPassword: item.userPassword }));
+    const usersStr = JSON.stringify(newUsersList);
+    localStorage.setItem('user', usersStr);
+    if (newUsersList) {
+      this.setState({
+        isLoggedIn: true,
+      });
     }
   };
 
   render() {
     const { login, password, isLoggedIn } = this.state;
+
     return isLoggedIn ? <Navigate to="/login" /> : (
       <div className={styles.container}>
         <form className={styles.form} onSubmit={this.onSubmit}>

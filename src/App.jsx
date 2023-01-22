@@ -7,7 +7,6 @@ import Counter from './pages/Counter/Counter';
 import PrivateRoute from './components/routes/PrivateRoute';
 import PublicRoute from './components/routes/PublicRoute';
 import Registration from './pages/auth/Register/Registration';
-import Button from './components/Button/Button';
 
 class App extends Component {
   render() {

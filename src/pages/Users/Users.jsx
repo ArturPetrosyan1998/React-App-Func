@@ -3,6 +3,7 @@ import { Component } from 'react';
 import Header from '../../components/Header/Header';
 import styles from './Users.module.scss';
 import { API } from '../../api';
+import Table from '../../components/Table/Table';
 
 const cx = classNames.bind(styles);
 class Users extends Component {
@@ -23,14 +24,10 @@ class Users extends Component {
   render() {
     const { users } = this.state;
     return (
-      <>
-        <div>
-          <Header onClick={this.handleToggleAside} className="header" />
-        </div>
-        <div>
-          {users.map((item) => <h2 key={item.id}>{item.name}</h2>)}
-        </div>
-      </>
+      <div>
+        <Header onClick={this.handleToggleAside} className="header" />
+        <Table users={users} />
+      </div>
 
     );
   }

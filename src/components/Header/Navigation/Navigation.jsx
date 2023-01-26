@@ -10,16 +10,15 @@ class Navigation extends Component {
         <NavLink to="/counter" className={styles.NavLink}>Counter</NavLink>
         <NavLink to="/login" className={styles.NavLink}>Login</NavLink>
         <NavLink to="/registration" className={styles.NavLink}>Registration</NavLink>
-        <NavLink to="/login" className={styles.NavLink}>
-          <button
-            type="button"
-            onClick={() => {
-              localStorage.removeItem('token');
-            }}
-          >
-            Log out
-          </button>
-
+        <NavLink
+          to="/login"
+          className={styles.NavLink}
+          type="button"
+          onClick={() => {
+            localStorage.removeItem('token');
+          }}
+        >
+          Log out
         </NavLink>
 
       </nav>

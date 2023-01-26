@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import { Link, Navigate } from 'react-router-dom';
+import Button from '../../../components/Button/Button';
+import Input from '../../../components/Input/Input';
 import styles from './Login.module.scss';
 
 class Login extends Component {
@@ -30,22 +32,22 @@ class Login extends Component {
     return isLoggedIn ? <Navigate to="/" /> : (
       <div className={styles.container}>
         <form className={styles.form} onSubmit={this.onSubmit}>
-          <input
+          <Input
             value={login}
             onChange={this.onChange}
             type="text"
             placeholder="User Name"
             name="login"
           />
-          <input
+          <Input
             value={password}
             onChange={this.onChange}
             type="password"
             placeholder="Password"
             name="password"
           />
-          <button disabled={!login || !password} type="submit">Submit</button>
-          <button type="button"><Link to="/registration" className={styles.RegistrLink}>Create new account</Link></button>
+          <Button disabled={!login || !password} type="submit">Submit</Button>
+          <Button type="button"><Link to="/registration" className={styles.RegistrLink}>Create new account</Link></Button>
         </form>
       </div>
 

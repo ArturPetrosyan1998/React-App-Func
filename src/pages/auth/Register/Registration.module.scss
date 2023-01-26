@@ -8,10 +8,18 @@
 
 .form {
     background-color: black;
-    width: 500px;
+    width: 700px;
     height: 500px;
     display: flex;
     flex-direction: column;
     padding: 20px 20px;
     gap: 25px;
+}
+
+.red {
+    border-color: red;
+}
+
+.greenyellow {
+    border-color: greenyellow;
 }

@@ -1,8 +1,10 @@
 import { Component } from 'react';
+import classNames from 'classnames/bind';
 import Aside from '../../components/Aside/Aside';
-import Button from '../../components/Button/Button';
 import Header from '../../components/Header/Header';
+import styles from './Home.module.scss';
 
+const cx = classNames.bind(styles);
 class Home extends Component {
   state = {
     isOpen: false,
@@ -17,7 +19,7 @@ class Home extends Component {
     const { isOpen } = this.state;
     return (
       <div>
-        <Header onClick={this.handleToggleAside} />
+        <Header onClick={this.handleToggleAside} className={cx({ header: isOpen === true })} />
         <Aside isOpen={isOpen} />
       </div>
     );

@@ -1,20 +1,17 @@
 import { Component } from 'react';
 import imgHamburger from './assets/icons/hamburger.png';
-import Navigation from './assets/icons/Navigation/Navigation';
+import Navigation from './Navigation/Navigation';
 import styles from './Header.module.scss';
 
 class Header extends Component {
   render() {
     const { ...rest } = this.props;
     return (
-      <header className={styles.container}>
-        <div {...rest}>
-          <img src={imgHamburger} alt="hamburger" />
-        </div>
-        <div>
+      <header className={rest.className}>
+        <div className={styles.container}>
+          <img src={imgHamburger} alt="hamburger" onClick={rest.onClick} />
           <Navigation />
         </div>
-
       </header>
     );
   }

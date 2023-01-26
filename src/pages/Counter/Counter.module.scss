@@ -1,7 +1,11 @@
-.modalButton{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.modalButton {
+    width: 150px;
+    height: 100px;
+    padding: 20px 30px;
+    background-color: black;
+    font-size: 24px;
+    color: aliceblue;
+    border-radius: 10px;
 }
 
 .asideStyle {
@@ -9,3 +13,16 @@
     justify-content: space-between;
 }
 
+.header {
+    position: absolute;
+    width: calc(100% - 300px);
+    right: 0;
+    top: 0;
+    transition: linear 0.5s;
+}
+
+.counterButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

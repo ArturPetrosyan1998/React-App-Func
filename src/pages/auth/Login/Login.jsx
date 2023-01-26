@@ -1,12 +1,9 @@
 import { Component } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
+import Button from '../../../components/Button/Button';
+import Input from '../../../components/Input/Input';
 import styles from './Login.module.scss';
 
-const users = [
-  { name: 'John', password: '111John' },
-  { name: 'Mark', password: '222Mark' },
-  { name: 'Ann', password: '333Ann' },
-];
 class Login extends Component {
   state = {
     login: '',
@@ -21,8 +18,9 @@ class Login extends Component {
   onSubmit = (event) => {
     event.preventDefault();
     const { login, password } = this.state;
-    const foundUser = users.find((item) => item.name === login && item.password === password);
-
+    const usersFromLocal = localStorage.getItem('user');
+    const newUsers = JSON.parse(usersFromLocal);
+    const foundUser = newUsers.find((item) => item.userName === login && item.userPassword === password);
     if (foundUser) {
       localStorage.setItem('token', true);
       this.setState({ isLoggedIn: true });
@@ -34,23 +32,23 @@ class Login extends Component {
     return isLoggedIn ? <Navigate to="/" /> : (
       <div className={styles.container}>
         <form className={styles.form} onSubmit={this.onSubmit}>
-          <input
+          <Input
             value={login}
             onChange={this.onChange}
             type="text"
             placeholder="User Name"
             name="login"
           />
-          <input
+          <Input
             value={password}
             onChange={this.onChange}
             type="password"
             placeholder="Password"
             name="password"
           />
-          <button disabled={!login || !password} type="submit">Submit</button>
+          <Button disabled={!login || !password} type="submit">Submit</Button>
+          <Button type="button"><Link to="/registration" className={styles.RegistrLink}>Create new account</Link></Button>
         </form>
-
       </div>
 
     );

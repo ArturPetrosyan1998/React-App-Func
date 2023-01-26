@@ -8,7 +8,7 @@
 
 .form {
     background-color: black;
-    width: 500px;
+    width: 700px;
     height: 500px;
     display: flex;
     flex-direction: column;
@@ -16,9 +16,10 @@
     gap: 25px;
 }
 
-.RegistrLink {
-    color: white;
-    font-size: 20px;
-    text-decoration: none;
-    color: black;
+.red {
+    border-color: red;
+}
+
+.greenyellow {
+    border-color: greenyellow;
 }

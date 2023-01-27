@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import Aside from '../../components/Aside/Aside';
 import Header from '../../components/Header/Header';
 import styles from './Home.module.scss';
+import Table from '../../components/Table/Table';
 
 const cx = classNames.bind(styles);
 class Home extends Component {
@@ -21,6 +22,7 @@ class Home extends Component {
       <div>
         <Header onClick={this.handleToggleAside} className={cx({ header: isOpen === true })} />
         <Aside isOpen={isOpen} />
+        <Table />
       </div>
     );
   }

@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import styles from './Users.module.scss';
 import { API } from '../../api';
 import Table from '../../components/Table/Table';
+import axios from '../../api/axios';
 
 const cx = classNames.bind(styles);
 class Users extends Component {

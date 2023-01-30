@@ -1,9 +1,14 @@
-.tr {
-    font-size: 15px;
-    border: 2px solid;
+table {
+    width: 100%;
+    border: 1px solid;
+    border-collapse: collapse;
 }
-.td {
-    font-size: 15px;
-    border: 2px solid;
-    padding: 20px;
+
+
+tr , td , th {
+    border: 1px solid;
+}
+
+td ,th {
+    padding: 10px;
 }

@@ -3,29 +3,25 @@ import styles from './Table.module.scss';
 
 class Table extends Component {
   render() {
-    const { users } = this.props;
+    const { data, columns } = this.props;
+    console.log(data);
     return (
-
-      <table key="table">
+      <table>
         <thead>
-          <tr className={styles.tr}>
-            <td className={styles.td}>Names</td>
-            <td className={styles.td}>Usernames</td>
-            <td className={styles.td}>Emails</td>
-            <td className={styles.td}>Web Sites</td>
+          <tr>
+            {columns.map(((item) => <th key={item.accessor}>{item.Header}</th>))}
           </tr>
         </thead>
         <tbody>
-          {users.map((item) => (
-            <tr className={styles.tr}>
-              <td key={item.id} className={styles.td}>{item.name}</td>
-              <td key={item.id} className={styles.td}>{item.username}</td>
-              <td key={item.id} className={styles.td}>{item.email}</td>
-              <td key={item.id} className={styles.td}>{item.website}</td>
+          {data.map((item, index) => (
+            <tr key={index}>
+              {columns.map((column, index) => <td key={index}>{item[`col${index + 1}`]}</td>)}
             </tr>
           ))}
         </tbody>
+        <tfoot />
       </table>
+
     );
   }
 }

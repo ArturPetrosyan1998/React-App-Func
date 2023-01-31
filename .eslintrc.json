@@ -36,6 +36,7 @@
         "class-methods-use-this": "off",
         "no-shadow" : "off",
         "react/no-array-index-key" : "off",
-        "max-len" : "off"
+        "max-len" : "off",
+        "react/function-component-definition" : "off"
     }
 }

@@ -9,6 +9,7 @@ import PublicRoute from './components/routes/PublicRoute';
 import Registration from './pages/auth/Register/Registration';
 import Users from './pages/Users/Users';
 import Posts from './pages/Posts/Posts';
+import NotFound from './pages/404/404';
 
 class App extends Component {
   render() {
@@ -61,6 +62,12 @@ class App extends Component {
               <PublicRoute>
                 <Registration />
               </PublicRoute>
+            )}
+          />
+          <Route
+            path="*"
+            element={(
+              <NotFound />
             )}
           />
         </Routes>

@@ -20,12 +20,14 @@ class Users extends Component {
     this.setState({ users });
   };
 
-  onUserRowClick = () => [
-
-  ];
+  onUserRowClick = () => {
+    const { navigate } = this.props;
+    navigate('/dfsfs');
+  };
 
   render() {
     const { users } = this.state;
+    console.log(this.props);
     return (
       <div>
         <Header onClick={this.handleToggleAside} className="header" />

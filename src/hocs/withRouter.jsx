@@ -1,10 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const withRouter = (Component) => {
-  class Wrapper extends React.Component {
-    render() {
-      return <Component x={10} />;
-    }
-  }
+  const Wrapper = () => {
+    const navigate = useNavigate();
+    return <Component navigate={navigate} />;
+  };
   return Wrapper;
 };

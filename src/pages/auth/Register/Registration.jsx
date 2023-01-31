@@ -1,9 +1,9 @@
 import { Component } from 'react';
-import { Navigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import Input from '../../../components/Input/Input';
 import styles from './Registration.module.scss';
 import Button from '../../../components/Button/Button';
+import { withRouter } from '../../../hocs/withRouter';
 
 const cx = classNames.bind(styles);
 class Registration extends Component {
@@ -11,7 +11,6 @@ class Registration extends Component {
     login: '',
     password: '',
     repeatPassword: '',
-    isLoggedIn: false,
     isBlurSuccess: false,
     isRepeatPassword: false,
     borderError: '',
@@ -23,6 +22,7 @@ class Registration extends Component {
 
   onSubmit = (event) => {
     const { isBlurSuccess, isRepeatPassword } = this.state;
+    const { navigate } = this.props;
     event.preventDefault();
     if (isBlurSuccess && isRepeatPassword) {
       const {
@@ -36,9 +36,7 @@ class Registration extends Component {
       const usersStr = JSON.stringify(users);
       localStorage.setItem('user', usersStr);
       if (users && isBlurSuccess && isRepeatPassword) {
-        this.setState({
-          isLoggedIn: true,
-        });
+        return navigate('/login');
       }
     }
   };
@@ -67,9 +65,9 @@ class Registration extends Component {
 
   render() {
     const {
-      login, password, repeatPassword, isLoggedIn, borderError,
+      login, password, repeatPassword, borderError,
     } = this.state;
-    return isLoggedIn ? <Navigate to="/login" /> : (
+    return (
       <div className={styles.container}>
         <form className={styles.form} onSubmit={this.onSubmit}>
 
@@ -119,4 +117,4 @@ class Registration extends Component {
   }
 }
 
-export default Registration;
+export default withRouter(Registration);

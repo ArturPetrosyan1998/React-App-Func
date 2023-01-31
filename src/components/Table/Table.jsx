@@ -1,24 +1,25 @@
+import classNames from 'classnames';
 import { Component } from 'react';
 import styles from './Table.module.scss';
 
 class Table extends Component {
   render() {
-    const { users } = this.props;
-
+    const { data, columns, onRowClick } = this.props;
     return (
       <table>
-        <tr>
-          <th className={styles.th}>{users.map((user) => user.name)}</th>
-        </tr>
-        <tr>
-          <th className={styles.th}>{users.map((user) => user.username)}</th>
-        </tr>
-        <tr>
-          <th className={styles.th}>{users.map((user) => user.email)}</th>
-        </tr>
-        <tr>
-          <th className={styles.th}>{users.map((user) => user.phone)}</th>
-        </tr>
+        <thead>
+          <tr>
+            {columns.map(((item) => <th key={item.accessor}>{item.Header}</th>))}
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <tr key={index} onClick={onRowClick}>
+              {columns.map((_, index) => <td key={index}>{item[`col${index + 1}`]}</td>)}
+            </tr>
+          ))}
+        </tbody>
+        <tfoot />
       </table>
     );
   }

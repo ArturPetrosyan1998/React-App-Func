@@ -1,14 +1,14 @@
 import { Component } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from '../../../components/Button/Button';
 import Input from '../../../components/Input/Input';
 import styles from './Login.module.scss';
+import { withRouter } from '../../../hocs/withRouter';
 
 class Login extends Component {
   state = {
     login: '',
     password: '',
-    isLoggedIn: false,
   };
 
   onChange = (event) => {
@@ -18,18 +18,20 @@ class Login extends Component {
   onSubmit = (event) => {
     event.preventDefault();
     const { login, password } = this.state;
+    const { navigate } = this.props;
     const usersFromLocal = localStorage.getItem('user');
     const newUsers = JSON.parse(usersFromLocal);
     const foundUser = newUsers.find((item) => item.userName === login && item.userPassword === password);
     if (foundUser) {
       localStorage.setItem('token', true);
-      this.setState({ isLoggedIn: true });
+      return navigate('/');
     }
+    return navigate('/login');
   };
 
   render() {
-    const { login, password, isLoggedIn } = this.state;
-    return isLoggedIn ? <Navigate to="/" /> : (
+    const { login, password } = this.state;
+    return (
       <div className={styles.container}>
         <form className={styles.form} onSubmit={this.onSubmit}>
           <Input
@@ -55,4 +57,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

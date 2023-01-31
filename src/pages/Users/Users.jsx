@@ -1,18 +1,17 @@
-import classNames from 'classnames/bind';
 import { Component } from 'react';
 import Header from '../../components/Header/Header';
-import styles from './Users.module.scss';
 import { API } from '../../api';
 import Table from '../../components/Table/Table';
+import { usersColumns } from './constants';
+import { getMapUsers } from './utils';
+import { withRouter } from '../../hocs/withRouter';
 
-const cx = classNames.bind(styles);
 class Users extends Component {
   state = {
     users: [],
-
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     this.getUsers();
   }
 
@@ -21,16 +20,21 @@ class Users extends Component {
     this.setState({ users });
   };
 
+  onUserRowClick = () => {
+    const { navigate } = this.props;
+    navigate('/dfsfs');
+  };
+
   render() {
     const { users } = this.state;
     return (
       <div>
         <Header onClick={this.handleToggleAside} className="header" />
-        <Table users={users} />
+        <Table columns={usersColumns} data={getMapUsers(users)} onRowClick={this.onUserRowClick} />
       </div>
 
     );
   }
 }
 
-export default Users;
+export default withRouter(Users);

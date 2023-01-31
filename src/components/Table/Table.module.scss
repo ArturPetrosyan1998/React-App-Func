@@ -1,5 +1,23 @@
-.th {
-    font-size: 20px;
-    padding: 20px;
-    border: 2px solid;
+table {
+    width: 100%;
+    border: 1px solid;
+    border-collapse: collapse;
+    margin-top: 100px;
+}
+
+
+tr,
+td,
+th {
+    border: 1px solid;
+}
+
+td,
+th {
+    padding: 10px;
+}
+
+tr:hover {
+    background-color: aqua;
+    cursor: pointer;
 }

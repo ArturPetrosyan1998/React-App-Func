@@ -8,6 +8,7 @@ import PrivateRoute from './components/routes/PrivateRoute';
 import PublicRoute from './components/routes/PublicRoute';
 import Registration from './pages/auth/Register/Registration';
 import Users from './pages/Users/Users';
+import Posts from './pages/Posts/Posts';
 
 class App extends Component {
   render() {
@@ -35,6 +36,14 @@ class App extends Component {
             element={(
               <PrivateRoute>
                 <Users />
+              </PrivateRoute>
+            )}
+          />
+          <Route
+            path="/posts"
+            element={(
+              <PrivateRoute>
+                <Posts />
               </PrivateRoute>
             )}
           />

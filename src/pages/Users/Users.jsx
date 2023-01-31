@@ -27,7 +27,6 @@ class Users extends Component {
 
   render() {
     const { users } = this.state;
-    console.log(this.props);
     return (
       <div>
         <Header onClick={this.handleToggleAside} className="header" />

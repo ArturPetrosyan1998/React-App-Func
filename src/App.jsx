@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import './Reset.scss';
+import './reset.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Login from './pages/auth/Login/Login';
@@ -10,6 +10,7 @@ import Registration from './pages/auth/Register/Registration';
 import Users from './pages/Users/Users';
 import Posts from './pages/Posts/Posts';
 import NotFound from './pages/404/404';
+import User from './pages/User/User';
 
 class App extends Component {
   render() {
@@ -68,6 +69,12 @@ class App extends Component {
             path="*"
             element={(
               <NotFound />
+            )}
+          />
+          <Route
+            path="/user"
+            element={(
+              <User />
             )}
           />
         </Routes>

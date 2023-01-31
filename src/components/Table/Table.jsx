@@ -14,7 +14,12 @@ class Table extends Component {
         </thead>
         <tbody>
           {data.map((item, index) => (
-            <tr key={index} onClick={onRowClick}>
+            <tr
+              key={index}
+              onClick={() => {
+                onRowClick(item);
+              }}
+            >
               {columns.map((_, index) => <td key={index}>{item[`col${index + 1}`]}</td>)}
             </tr>
           ))}

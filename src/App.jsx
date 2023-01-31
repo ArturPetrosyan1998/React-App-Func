@@ -10,6 +10,7 @@ import Registration from './pages/auth/Register/Registration';
 import Users from './pages/Users/Users';
 import Posts from './pages/Posts/Posts';
 import NotFound from './pages/404/404';
+import User from './pages/User/User';
 
 class App extends Component {
   render() {
@@ -71,9 +72,9 @@ class App extends Component {
             )}
           />
           <Route
-            path="*"
+            path="/user"
             element={(
-              <NotFound />
+              <User />
             )}
           />
         </Routes>

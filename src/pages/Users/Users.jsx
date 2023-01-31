@@ -20,9 +20,10 @@ class Users extends Component {
     this.setState({ users });
   };
 
-  onUserRowClick = () => {
+  onUserRowClick = (userData) => {
     const { navigate } = this.props;
-    navigate('/dfsfs');
+    // navigate(`/user/${userData.col1}`);
+    navigate(`/user?id=${userData.col1}`);
   };
 
   render() {

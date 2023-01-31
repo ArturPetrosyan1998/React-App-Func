@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import './Reset.scss';
+import './reset.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Login from './pages/auth/Login/Login';
@@ -62,6 +62,12 @@ class App extends Component {
               <PublicRoute>
                 <Registration />
               </PublicRoute>
+            )}
+          />
+          <Route
+            path="*"
+            element={(
+              <NotFound />
             )}
           />
           <Route

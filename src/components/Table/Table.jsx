@@ -1,10 +1,10 @@
+import classNames from 'classnames';
 import { Component } from 'react';
 import styles from './Table.module.scss';
 
 class Table extends Component {
   render() {
-    const { data, columns } = this.props;
-    console.log(data);
+    const { data, columns, onRowClick } = this.props;
     return (
       <table>
         <thead>
@@ -14,14 +14,13 @@ class Table extends Component {
         </thead>
         <tbody>
           {data.map((item, index) => (
-            <tr key={index}>
-              {columns.map((column, index) => <td key={index}>{item[`col${index + 1}`]}</td>)}
+            <tr key={index} onClick={onRowClick}>
+              {columns.map((_, index) => <td key={index}>{item[`col${index + 1}`]}</td>)}
             </tr>
           ))}
         </tbody>
         <tfoot />
       </table>
-
     );
   }
 }

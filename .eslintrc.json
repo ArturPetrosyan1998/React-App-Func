@@ -33,6 +33,9 @@
         "consistent-return": "off",
         "no-param-reassign": "off",
         "jsx-a11y/no-noninteractive-element-interactions": "off",
-        "class-methods-use-this": "off"
+        "class-methods-use-this": "off",
+        "no-shadow" : "off",
+        "react/no-array-index-key" : "off",
+        "max-len" : "off"
     }
 }

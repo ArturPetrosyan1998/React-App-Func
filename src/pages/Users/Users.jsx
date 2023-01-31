@@ -1,10 +1,10 @@
 import { Component } from 'react';
 import Header from '../../components/Header/Header';
-import styles from './Users.module.scss';
 import { API } from '../../api';
 import Table from '../../components/Table/Table';
 import { usersColumns } from './constants';
 import { getMapUsers } from './utils';
+import { withRouter } from '../../hocs/withRouter';
 
 class Users extends Component {
   state = {
@@ -12,7 +12,6 @@ class Users extends Component {
   };
 
   componentDidMount() {
-    console.log('ok');
     this.getUsers();
   }
 
@@ -21,16 +20,20 @@ class Users extends Component {
     this.setState({ users });
   };
 
+  onUserRowClick = () => [
+
+  ];
+
   render() {
     const { users } = this.state;
     return (
       <div>
         <Header onClick={this.handleToggleAside} className="header" />
-        <Table columns={usersColumns} data={getMapUsers(users)} />
+        <Table columns={usersColumns} data={getMapUsers(users)} onRowClick={this.onUserRowClick} />
       </div>
 
     );
   }
 }
 
-export default Users;
+export default withRouter(Users);

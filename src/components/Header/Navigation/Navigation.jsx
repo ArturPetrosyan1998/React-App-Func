@@ -3,6 +3,10 @@ import { NavLink } from 'react-router-dom';
 import styles from './Navigation.module.scss';
 
 class Navigation extends Component {
+  handleLogOut = () => {
+    localStorage.removeItem('token');
+  };
+
   render() {
     return (
       <nav className={styles.nav}>
@@ -10,13 +14,12 @@ class Navigation extends Component {
         <NavLink to="/counter" className={styles.NavLink}>Counter</NavLink>
         <NavLink to="/login" className={styles.NavLink}>Login</NavLink>
         <NavLink to="/registration" className={styles.NavLink}>Registration</NavLink>
+        <NavLink to="/users" className={styles.NavLink}>Users</NavLink>
         <NavLink
           to="/login"
           className={styles.NavLink}
           type="button"
-          onClick={() => {
-            localStorage.removeItem('token');
-          }}
+          onClick={this.handleLogOut}
         >
           Log out
         </NavLink>

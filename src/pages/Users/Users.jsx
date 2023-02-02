@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import Header from '../../components/Header/Header';
 import { API } from '../../api';
 import Table from '../../components/Table/Table';
 import { usersColumns } from './constants';
@@ -22,7 +21,6 @@ class Users extends Component {
 
   onUserRowClick = (userData) => {
     const { navigate } = this.props;
-    // navigate(`/user/${userData.col1}`);
     navigate(`/user?id=${userData.col1}`);
   };
 
@@ -30,7 +28,6 @@ class Users extends Component {
     const { users } = this.state;
     return (
       <div>
-        <Header onClick={this.handleToggleAside} className="header" />
         <Table columns={usersColumns} data={getMapUsers(users)} onRowClick={this.onUserRowClick} />
       </div>
 

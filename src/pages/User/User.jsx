@@ -26,7 +26,6 @@ class User extends Component {
     return (
       <div>
         <Table columns={userColumns} data={getMapUsersById(userById)} />
-
       </div>
     );
   }

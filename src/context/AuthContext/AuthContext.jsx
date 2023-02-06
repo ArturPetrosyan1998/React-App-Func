@@ -19,7 +19,6 @@ class AuthProvider extends Component {
   render() {
     const { children } = this.props;
     const { token } = this.state;
-    console.log(this.state);
     return <Provider value={{ token, handleLogin: this.handleLogin, handleLogout: this.handleLogout }}>{children}</Provider>;
   }
 }

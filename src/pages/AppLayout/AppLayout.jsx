@@ -5,7 +5,9 @@ import Aside from '../../components/Aside/Aside';
 import Header from '../../components/Header/Header';
 import PrivateRoute from '../../components/routes/PrivateRoute';
 import PublicRoute from '../../components/routes/PublicRoute';
-import { Consumer } from '../../context/AuthContext';
+import { withAuthProvider } from '../../hocs/withAuthProvider';
+import { withDialog } from '../../hocs/withDialog';
+import { renderDialog } from '../../utils';
 import NotFound from '../404/404';
 import Login from '../auth/Login/Login';
 import Registration from '../auth/Register/Registration';
@@ -29,84 +31,84 @@ class AppLayout extends Component {
 
   render() {
     const { isOpenAside } = this.state;
+    const { token, dialogId } = this.props;
     return (
-      <Consumer>
-        {({ token }) => (
-          <BrowserRouter>
-            {token && <Header isOpenAside={this.handleOpenAside} />}
-            {token && <Aside isOpenAside={isOpenAside} />}
-            <div>
-              <main className={styles.main}>
-                <Routes>
-                  <Route
-                    path="/"
-                    element={(
-                      <PrivateRoute>
-                        <Home />
-                      </PrivateRoute>
+      <>
+        <BrowserRouter>
+          {token && <Header isOpenAside={this.handleOpenAside} />}
+          {token && <Aside isOpenAside={isOpenAside} />}
+          <div>
+            <main className={styles.main}>
+              <Routes>
+                <Route
+                  path="/"
+                  element={(
+                    <PrivateRoute>
+                      <Home />
+                    </PrivateRoute>
                                   )}
-                  />
-                  <Route
-                    path="/counter"
-                    element={(
-                      <PrivateRoute>
-                        <Counter />
-                      </PrivateRoute>
+                />
+                <Route
+                  path="/counter"
+                  element={(
+                    <PrivateRoute>
+                      <Counter />
+                    </PrivateRoute>
                                   )}
-                  />
-                  <Route
-                    path="/users"
-                    element={(
-                      <PrivateRoute>
-                        <Users />
-                      </PrivateRoute>
+                />
+                <Route
+                  path="/users"
+                  element={(
+                    <PrivateRoute>
+                      <Users />
+                    </PrivateRoute>
                                   )}
-                  />
-                  <Route
-                    path="/posts"
-                    element={(
-                      <PrivateRoute>
-                        <Posts />
-                      </PrivateRoute>
+                />
+                <Route
+                  path="/posts"
+                  element={(
+                    <PrivateRoute>
+                      <Posts />
+                    </PrivateRoute>
                                   )}
-                  />
-                  <Route
-                    path="/login"
-                    element={(
-                      <PublicRoute>
-                        <Login />
-                      </PublicRoute>
+                />
+                <Route
+                  path="/login"
+                  element={(
+                    <PublicRoute>
+                      <Login />
+                    </PublicRoute>
                                   )}
-                  />
-                  <Route
-                    path="/registration"
-                    element={(
-                      <PublicRoute>
-                        <Registration />
-                      </PublicRoute>
+                />
+                <Route
+                  path="/registration"
+                  element={(
+                    <PublicRoute>
+                      <Registration />
+                    </PublicRoute>
                                   )}
-                  />
-                  <Route
-                    path="*"
-                    element={(
-                      <NotFound />
+                />
+                <Route
+                  path="*"
+                  element={(
+                    <NotFound />
                                   )}
-                  />
-                  <Route
-                    path="/user"
-                    element={(
-                      <User />
+                />
+                <Route
+                  path="/user"
+                  element={(
+                    <User />
                                   )}
-                  />
-                </Routes>
-              </main>
-            </div>
+                />
+              </Routes>
+            </main>
+          </div>
 
-          </BrowserRouter>
-        )}
-      </Consumer>
+        </BrowserRouter>
+        {renderDialog(dialogId)}
+      </>
     );
   }
 }
 
-export default AppLayout;
+export default withAuthProvider(withDialog(AppLayout));

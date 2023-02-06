@@ -20,6 +20,16 @@
     top: 0;
     transition: linear 0.5s;
 }
+.dialogStyle {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    padding: 30px;
+    width: 500px;
+    height: 500px;
+    height: 100vh;
+     
+}
 
 .counterButton{
     display: flex;

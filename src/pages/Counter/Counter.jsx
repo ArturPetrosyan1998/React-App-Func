@@ -1,41 +1,24 @@
 import { Component } from 'react';
+import { dialogs } from '../../constants/dialogs';
+import { withDialog } from '../../hocs/withDialog';
 import Button from '../../ui-kit/components/Button/Button';
-import Modal from '../../components/Modal/Modal';
-import Dialog from '../../ui-kit/components/DIalog/index';
-import styles from './Counter.module.scss';
 
 class Counter extends Component {
-  state = {
-    isOpenModal: false,
-  };
-
-  handleModalOpen = () => {
-    const { isOpenModal } = this.state;
-    this.setState({ isOpenModal: !isOpenModal });
-  };
-
-  handleModalClose = () => {
-    const { isOpenModal } = this.state;
-    this.setState({ isOpenModal: !isOpenModal });
+  onOpenDialog = () => {
+    const { openDialog } = this.props;
+    openDialog(dialogs.CounterDialog);
   };
 
   render() {
-    const { isOpenModal } = this.state;
+    const { openDialog } = this.props;
     return (
       <div>
-        <Dialog isOpen>
-          <div className={styles.asideStyle}>
-            <div className={styles.counterButton}>
-              <Button onClick={this.handleModalOpen} className={styles.modalButton}>
-                Modal
-              </Button>
-            </div>
-          </div>
-          <Modal isOpenModal={isOpenModal} onClick={this.handleModalClose} />
-        </Dialog>
+        <Button onClick={this.onOpenDialog}>
+          Open Dialog
+        </Button>
       </div>
     );
   }
 }
 
-export default Counter;
+export default withDialog(Counter);

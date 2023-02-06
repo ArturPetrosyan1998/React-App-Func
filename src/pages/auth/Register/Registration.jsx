@@ -1,8 +1,8 @@
 import { Component } from 'react';
 import classNames from 'classnames/bind';
-import Input from '../../../components/Input/Input';
+import Input from '../../../ui-kit/components/Input/Input';
 import styles from './Registration.module.scss';
-import Button from '../../../components/Button/Button';
+import Button from '../../../ui-kit/components/Button/Button';
 import { withRouter } from '../../../hocs/withRouter';
 
 const cx = classNames.bind(styles);

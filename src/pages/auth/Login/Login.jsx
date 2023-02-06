@@ -1,8 +1,8 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import Button from '../../../components/Button/Button';
-import Input from '../../../components/Input/Input';
+import Button from '../../../ui-kit/components/Button/Button';
+import Input from '../../../ui-kit/components/Input/Input';
 import styles from './Login.module.scss';
 import { withRouter } from '../../../hocs/withRouter';
 import { Consumer } from '../../../context/AuthContext';

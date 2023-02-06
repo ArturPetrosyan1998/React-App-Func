@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import Button from '../../components/Button/Button';
+import Button from '../../ui-kit/components/Button/Button';
 import Modal from '../../components/Modal/Modal';
-
+import Dialog from '../../ui-kit/components/DIalog/index';
 import styles from './Counter.module.scss';
 
 class Counter extends Component {
@@ -23,14 +23,16 @@ class Counter extends Component {
     const { isOpenModal } = this.state;
     return (
       <div>
-        <div className={styles.asideStyle}>
-          <div className={styles.counterButton}>
-            <Button onClick={this.handleModalOpen} className={styles.modalButton}>
-              Modal
-            </Button>
+        <Dialog isOpen>
+          <div className={styles.asideStyle}>
+            <div className={styles.counterButton}>
+              <Button onClick={this.handleModalOpen} className={styles.modalButton}>
+                Modal
+              </Button>
+            </div>
           </div>
-        </div>
-        <Modal isOpenModal={isOpenModal} onClick={this.handleModalClose} />
+          <Modal isOpenModal={isOpenModal} onClick={this.handleModalClose} />
+        </Dialog>
       </div>
     );
   }

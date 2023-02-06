@@ -16,6 +16,7 @@ class Navigation extends Component {
             <NavLink to="/registration" className={styles.NavLink}>Registration</NavLink>
             <NavLink to="/users" className={styles.NavLink}>Users</NavLink>
             <NavLink to="/posts" className={styles.NavLink}>Posts</NavLink>
+            <NavLink to="/todolist" className={styles.NavLink}>Todo List</NavLink>
             <NavLink
               to="/login"
               className={styles.NavLink}

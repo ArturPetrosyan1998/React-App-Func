@@ -1,26 +1,18 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import { API } from '../../api';
 import Table from '../../components/Table/Table';
 import { postColumns } from './constants';
 import { getMapPosts } from './utils';
 
-class Posts extends Component {
-  state = {
-    posts: [],
+const Posts = () => {
+  const [posts, setPosts] = useState([]);
+  const getPosts = async () => {
+    setPosts(await API.post.getPosts());
   };
-
-  componentDidMount() {
-    this.getPosts();
-  }
-
-  getPosts = async () => {
-    const posts = await API.post.getPosts();
-    this.setState({ posts });
-  };
-
-  render() {
-    const { posts } = this.state;
-
+  useEffect(() => {
+    getPosts();
+  }, []);
+  if (posts !== []) {
     return (
       <div>
         <Table columns={postColumns} data={getMapPosts(posts)} />
@@ -28,6 +20,6 @@ class Posts extends Component {
 
     );
   }
-}
+};
 
 export default Posts;

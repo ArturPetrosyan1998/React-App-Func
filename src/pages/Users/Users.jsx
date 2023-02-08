@@ -1,38 +1,41 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { API } from '../../api';
 import Table from '../../components/Table/Table';
 import { usersColumns } from './constants';
 import { getMapUsers } from './utils';
-import { withRouter } from '../../hocs/withRouter';
 
-class Users extends Component {
-  state = {
-    users: [],
+const Users = () => {
+  const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
+
+  const getUsers = async () => {
+    setUsers(await API.user.getUsers());
   };
 
-  componentDidMount() {
-    this.getUsers();
-  }
-
-  getUsers = async () => {
-    const users = await API.user.getUsers();
-    this.setState({ users });
-  };
-
-  onUserRowClick = (userData) => {
-    const { navigate } = this.props;
+  const onUserRowClick = (userData) => {
     navigate(`/user?id=${userData.col1}`);
   };
-
-  render() {
-    const { users } = this.state;
+  useEffect(() => {
+    getUsers();
+  }, []);
+  if (users !== []) {
+    const usersMap = users.map(({
+      id, name, username, website, phone, email,
+    }) => ({
+      col1: id,
+      col2: name,
+      col3: username,
+      col4: website,
+      col5: phone,
+      col6: email,
+    }));
     return (
       <div>
-        <Table columns={usersColumns} data={getMapUsers(users)} onRowClick={this.onUserRowClick} />
+        <Table columns={usersColumns} data={usersMap} onRowClick={onUserRowClick} />
       </div>
-
     );
   }
-}
+};
 
-export default withRouter(Users);
+export default Users;

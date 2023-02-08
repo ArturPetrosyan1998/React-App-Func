@@ -1,15 +1,12 @@
-import { Component } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-class PublicRoute extends Component {
-  render() {
-    const { children } = this.props;
-    const token = localStorage.getItem('token');
-    if (token) {
-      return <Navigate to="/" />;
-    }
-    return children;
+const PublicRoute = ({ children }) => {
+  const token = localStorage.getItem('token');
+  const navigate = useNavigate();
+  if (token) {
+    return navigate('/');
   }
-}
+  return children;
+};
 
 export default PublicRoute;

@@ -1,11 +1,5 @@
-import { Component } from 'react';
+const Button = ({ text, children, ...rest }) => (
+  <button type="button" {...rest}>{children}</button>
+);
 
-class Button extends Component {
-  render() {
-    const { text, children, ...rest } = this.props;
-    return (
-      <button type="button" {...rest}>{children}</button>
-    );
-  }
-}
 export default Button;

@@ -1,5 +1,4 @@
 import Modal from 'react-modal';
-import React, { Component } from 'react';
 import Button from '../Button/Button';
 import { withDialog } from '../../../hocs/withDialog';
 
@@ -24,26 +23,20 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-class Dialog extends Component {
-  render() {
-    const {
-      isOpen, closeDialog, label, children,
-    } = this.props;
-
-    return (
-      <Modal
-        isOpen={isOpen}
-        onRequestClose={closeDialog}
-        style={customStyles}
-        contentLabel={label}
-      >
-        <div>
-          <Button onClick={closeDialog}>Close Dialog</Button>
-        </div>
-        {children}
-      </Modal>
-    );
-  }
-}
+const Dialog = ({
+  isOpen, closeDialog, label, children,
+}) => (
+  <Modal
+    isOpen={isOpen}
+    onRequestClose={closeDialog}
+    style={customStyles}
+    contentLabel={label}
+  >
+    <div>
+      <Button onClick={closeDialog}>Close Dialog</Button>
+    </div>
+    {children}
+  </Modal>
+);
 
 export default withDialog(Dialog);

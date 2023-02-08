@@ -19,7 +19,6 @@ import User from '../User/User';
 import Users from '../Users/Users';
 import styles from './AppLayout.module.scss';
 
-const cx = classNames.bind(styles);
 class AppLayout extends Component {
   state = {
     isOpenAside: false,

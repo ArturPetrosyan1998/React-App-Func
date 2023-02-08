@@ -14,6 +14,7 @@ import Registration from '../auth/Register/Registration';
 import Counter from '../Counter/Counter';
 import Home from '../Home/Home';
 import Posts from '../Posts/Posts';
+import ToDoList from '../ToDoList/TodoList';
 import User from '../User/User';
 import Users from '../Users/Users';
 import styles from './AppLayout.module.scss';
@@ -36,9 +37,9 @@ class AppLayout extends Component {
       <>
         <BrowserRouter>
           {token && <Header isOpenAside={this.handleOpenAside} />}
-          {token && <Aside isOpenAside={isOpenAside} />}
           <div>
             <main className={styles.main}>
+              {token && <Aside isOpenAside={isOpenAside} />}
               <Routes>
                 <Route
                   path="/"
@@ -61,6 +62,14 @@ class AppLayout extends Component {
                   element={(
                     <PrivateRoute>
                       <Users />
+                    </PrivateRoute>
+                                  )}
+                />
+                <Route
+                  path="/todolist"
+                  element={(
+                    <PrivateRoute>
+                      <ToDoList />
                     </PrivateRoute>
                                   )}
                 />

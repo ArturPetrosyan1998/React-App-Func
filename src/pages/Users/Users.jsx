@@ -20,19 +20,9 @@ const Users = () => {
     getUsers();
   }, []);
   if (users !== []) {
-    const usersMap = users.map(({
-      id, name, username, website, phone, email,
-    }) => ({
-      col1: id,
-      col2: name,
-      col3: username,
-      col4: website,
-      col5: phone,
-      col6: email,
-    }));
     return (
       <div>
-        <Table columns={usersColumns} data={usersMap} onRowClick={onUserRowClick} />
+        <Table columns={usersColumns} data={getMapUsers(users)} onRowClick={onUserRowClick} />
       </div>
     );
   }
